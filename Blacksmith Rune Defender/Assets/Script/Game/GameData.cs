@@ -14,6 +14,6 @@ public enum Runes
 {
     FIRE,
     STRENGTH,
-    OCULT,
+    OCCULT,
     ENERGY
 }

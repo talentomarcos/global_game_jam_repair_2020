@@ -2,20 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CPlayer : CGameObject
 {
     public List<float> _lanesXPos;
     private int _currentLane = 0;
-    private bool _axisDown;
+    private bool _axisDown = true;
+    private bool _axisDownSend = true;
 
     private List<Runes> _currentSequence = new List<Runes>();
 
     private SpriteRenderer _spriteRend;
 
-    private void Awake()
+    private bool _axisDownFire = true;
+    private bool _axisDownOccult = true;
+    private bool _axisDownStrength = true;
+    private bool _axisDownEnergy = true;
+    //private float _movement;
+
+    public override void ApiAwake()
     {
+        base.ApiAwake();
         _spriteRend = GetComponentInChildren<SpriteRenderer>();
+
     }
 
     // Start is called before the first frame update
@@ -26,14 +36,15 @@ public class CPlayer : CGameObject
         SetX(_lanesXPos[_currentLane]);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void ApiUpdate()
     {
-        updateLaneMovement();
-        updateRuneInput();
+        base.ApiUpdate();
+        //Debug.Log(_movement);
+        UpdateLaneInput();
+        UpdateRuneInput();
     }
 
-    private void updateLaneMovement()
+    private void UpdateLaneInput()
     {
         float xInput = Input.GetAxisRaw("Horizontal");
         // Right
@@ -55,9 +66,43 @@ public class CPlayer : CGameObject
             }
         }
         _axisDown = xInput == 0;
+
+        if (Input.GetAxisRaw("SendSequence") > 0)
+        {
+            // TO DO check request on lane current
+            _currentSequence = new List<Runes>();
+        }
+        _axisDownSend = Input.GetAxisRaw("SendSequence") == 0;
     }
 
-    private void updateRuneInput()
+    public void AddRune(Runes aRune)
     {
+        Debug.Log(aRune);
+        _currentSequence.Add(aRune);
     }
+
+    private void UpdateRuneInput()
+    {
+        if (_axisDownFire && Input.GetAxisRaw("FireRune") > 0)
+        {
+            AddRune(Runes.FIRE);
+        }
+        if (_axisDownOccult && Input.GetAxisRaw("OccultRune") > 0)
+        {
+            AddRune(Runes.OCCULT);
+        }
+        if (_axisDownStrength && Input.GetAxisRaw("StrengthRune") > 0)
+        {
+            AddRune(Runes.STRENGTH);
+        }
+        if (_axisDownEnergy && Input.GetAxisRaw("EnergyRune") > 0)
+        {
+            AddRune(Runes.ENERGY);
+        }
+        _axisDownFire = Input.GetAxisRaw("FireRune") == 0; 
+        _axisDownOccult = Input.GetAxisRaw("OccultRune") == 0;
+        _axisDownStrength = Input.GetAxisRaw("StrengthRune") == 0;
+        _axisDownEnergy = Input.GetAxisRaw("EnergyRune") == 0;
+    }
+
 }

@@ -36,7 +36,6 @@ public class CGameObject : MonoBehaviour {
 
     private bool _useUnaffectedDeltaTime = false;
 
-    public delegate void GenericDelegate();
     public delegate void DamageDelegate(int currentHP, int maxHP);
     public delegate void BoolDelegate(bool aBool);
 
@@ -484,3 +483,5 @@ public class CGameObject : MonoBehaviour {
         _useUnaffectedDeltaTime = aUse;
     }
 }
+
+public delegate void GenericDelegate();
