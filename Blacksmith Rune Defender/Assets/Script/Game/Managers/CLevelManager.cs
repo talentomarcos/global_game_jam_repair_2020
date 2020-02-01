@@ -29,6 +29,8 @@ public class CLevelManager : CStateMachine
 
     private float _currentTimeEnemySpawn;
 
+    public CPlayer _player;
+
     void Awake()
     {
         if (_inst != null && _inst != this)
@@ -45,7 +47,6 @@ public class CLevelManager : CStateMachine
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

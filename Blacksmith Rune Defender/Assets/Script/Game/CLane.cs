@@ -21,6 +21,10 @@ public class CLane : MonoBehaviour
     /// </summary>
     public void OnSequenceComplete()
     {
+        if (_currentEnemy == null)
+        {
+            return;
+        }
         _currentEnemy.SetDead(true);
         _currentEnemy = null;
         _elapsedTimeNoEnemy = 0;
@@ -31,7 +35,8 @@ public class CLane : MonoBehaviour
     /// </summary>
     public void OnSequenceEnded()
     {
-
+        _currentEnemy.SetState(CEnemy.STATE_ATTACK);
+        //_elapsedTimeNoEnemy = 0;
     }
 
     private void Update()
@@ -45,8 +50,17 @@ public class CLane : MonoBehaviour
             _elapsedTimeNoEnemy += Time.deltaTime;
             if (_elapsedTimeNoEnemy > CLevelManager.Inst.GetCurrentTimeEnemySpawn())
             {
+                _elapsedTimeNoEnemy = 0;
                 SpawnEnemy();
                 return;
+            }
+        }
+        else
+        {
+            if (_currentEnemy.IsDead())
+            {
+                _currentEnemy = null;
+                _elapsedTimeNoEnemy = 0;
             }
         }
     }

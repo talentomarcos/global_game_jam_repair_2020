@@ -97,6 +97,7 @@ public class CSequenceManager : MonoBehaviour
                     break;
             }
         }
+        Debug.Log(sequence.Count);
         CSequenceData data = new CSequenceData(_sequenceWaitTime, sequence);
         _openSequences[aLane] = data;
         return data;

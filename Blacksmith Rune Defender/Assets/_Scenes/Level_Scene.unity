@@ -350,6 +350,7 @@ MonoBehaviour:
     spawnProbability: 1
   _minTimeEnemySpawn: 0.3
   _maxTimeEnemySpawn: 2
+  _player: {fileID: 1037570205}
 --- !u!114 &491807816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +615,18 @@ MonoBehaviour:
     _movementSpeed: 0
     _maxHealth: 1
     _knockBack: 8
+--- !u!114 &1037570205 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1037570204, guid: d999dd1a70e41324bbbf1c3721ed321b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7956023234457380449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037570203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb83f7a2bc56914bb5ab2624db45c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1084043730
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +932,7 @@ PrefabInstance:
     - target: {fileID: 8499308431905152399, guid: 41ea54004df0390458f79593172da5fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8499308431905152399, guid: 41ea54004df0390458f79593172da5fd,
         type: 3}
@@ -1005,7 +1018,7 @@ PrefabInstance:
     - target: {fileID: 8499308431905152399, guid: 41ea54004df0390458f79593172da5fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 8499308431905152399, guid: 41ea54004df0390458f79593172da5fd,
         type: 3}

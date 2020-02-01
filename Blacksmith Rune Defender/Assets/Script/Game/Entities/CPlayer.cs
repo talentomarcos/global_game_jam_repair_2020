@@ -70,7 +70,7 @@ public class CPlayer : CGameObject
         }
         _axisDown = xInput == 0;
 
-        if (Input.GetAxisRaw("SendSequence") > 0)
+        if (_axisDownSend && Input.GetAxisRaw("SendSequence") > 0)
         {
             if (CSequenceManager.Inst.CheckSequence(_currentLane,_currentSequence))
             {
@@ -116,4 +116,9 @@ public class CPlayer : CGameObject
         _axisDownEnergy = Input.GetAxisRaw("EnergyRune") == 0;
     }
 
+    public void Damage(int aDamage)
+    {
+        _stats.LowerHealth(aDamage);
+        // To Do damage feedback here.
+    }
 }

@@ -40,6 +40,13 @@ public class CEnemy : CGameObject
             _spriteRenderer.color = new Color(value,value,value,value);
 
         }
+        else if (GetState() == STATE_ATTACK)
+        {
+            if (GetStateTime() >= 1.7f)
+            {
+                SetDead(true);
+            }
+        }
     }
 
     public override void SetState(int aState)
@@ -50,7 +57,7 @@ public class CEnemy : CGameObject
         {
             case STATE_SPAWN:
                 {
-                    _spriteRenderer.color = Color.black;
+                    _spriteRenderer.color = Color.black.WithAlpha(0);
                 }
                 break;
 
@@ -63,6 +70,7 @@ public class CEnemy : CGameObject
             case STATE_ATTACK:
                 {
                     _spriteRenderer.color = Color.green;
+                    CLevelManager.Inst._player.Damage(_stats._attack);
                 }
                 break;
 
