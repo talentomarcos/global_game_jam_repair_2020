@@ -27,30 +27,19 @@ public class CEnemy : CGameObject
     {
         base.ApiUpdate();
 
-
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (GetState() == STATE_SPAWN)
         {
-            SetState(STATE_SPAWN);
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            SetState(STATE_IDLE);
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SetState(STATE_ATTACK);
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SetState(STATE_DEATH);
-            return;
+            float delta = GetStateTime() / 1f;
+            if (delta >= 1)
+            {
+                _spriteRenderer.color = Color.white;
+                SetState(STATE_IDLE);
+                return;
+            }
+            float value = Mathfx.Coserp(0, 1, delta);
+            _spriteRenderer.color = new Color(value,value,value,value);
 
         }
-#endif
     }
 
     public override void SetState(int aState)
@@ -61,13 +50,13 @@ public class CEnemy : CGameObject
         {
             case STATE_SPAWN:
                 {
-                    _spriteRenderer.color = Color.magenta;
+                    _spriteRenderer.color = Color.black;
                 }
                 break;
 
             case STATE_IDLE:
                 {
-                    _spriteRenderer.color = Color.yellow;
+                    //_spriteRenderer.color = Color.yellow;
                 }
                 break;
 
@@ -80,8 +69,18 @@ public class CEnemy : CGameObject
             case STATE_DEATH:
                 {
                     _spriteRenderer.color = Color.red;
+                    Destroy(gameObject);
                 }
                 break;
+        }
+    }
+
+    public override void SetDead(bool aIsDead)
+    {
+        base.SetDead(aIsDead);
+        if (aIsDead)
+        {
+            SetState(STATE_DEATH);
         }
     }
 }

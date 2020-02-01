@@ -9,12 +9,21 @@ public class CLane : MonoBehaviour
     public Transform _enemySpawnPonint;
     private CEnemy _currentEnemy;
 
+    private float _elapsedTimeNoEnemy = 0;
+
+    private void Start()
+    {
+        _elapsedTimeNoEnemy = CMath.RandomFloatBetween(0, CLevelManager.Inst.GetCurrentTimeEnemySpawn() + 1);
+    }
+
     /// <summary>
     /// Called when the player succesfully completes a sequence.
     /// </summary>
     public void OnSequenceComplete()
     {
-
+        _currentEnemy.SetDead(true);
+        _currentEnemy = null;
+        _elapsedTimeNoEnemy = 0;
     }
 
     /// <summary>
@@ -23,6 +32,23 @@ public class CLane : MonoBehaviour
     public void OnSequenceEnded()
     {
 
+    }
+
+    private void Update()
+    {
+        if (GameData.IsPause)
+        {
+            return;
+        }
+        if (_currentEnemy == null)
+        {
+            _elapsedTimeNoEnemy += Time.deltaTime;
+            if (_elapsedTimeNoEnemy > CLevelManager.Inst.GetCurrentTimeEnemySpawn())
+            {
+                SpawnEnemy();
+                return;
+            }
+        }
     }
 
     public void SpawnEnemy()

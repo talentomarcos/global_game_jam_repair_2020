@@ -8,6 +8,7 @@ public class GameData
     public static float MinVelClamp = .1f;
 
     public static int LaneAmount = 3;
+
 }
 
 public enum Runes

@@ -24,6 +24,11 @@ public class CLevelManager : CStateMachine
 
     public List<EnemyData> _enemies;
 
+    public float _minTimeEnemySpawn = .3f;
+    public float _maxTimeEnemySpawn = 2f;
+
+    private float _currentTimeEnemySpawn;
+
     void Awake()
     {
         if (_inst != null && _inst != this)
@@ -33,6 +38,8 @@ public class CLevelManager : CStateMachine
             //return;
         }
         _inst = this;
+
+        _currentTimeEnemySpawn = _maxTimeEnemySpawn;
     }
 
     // Start is called before the first frame update
@@ -45,5 +52,10 @@ public class CLevelManager : CStateMachine
     void Update()
     {
         
+    }
+
+    public float GetCurrentTimeEnemySpawn()
+    {
+        return _currentTimeEnemySpawn;
     }
 }
