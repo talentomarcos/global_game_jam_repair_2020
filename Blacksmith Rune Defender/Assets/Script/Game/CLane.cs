@@ -31,6 +31,7 @@ public class CLane : MonoBehaviour
         _currentEnemy.SetDead(true);
         _currentEnemy = null;
         _elapsedTimeNoEnemy = 0;
+        _ui.SetSequence(new List<Runes>());
     }
 
     /// <summary>
@@ -47,7 +48,8 @@ public class CLane : MonoBehaviour
             return;
         }
         _currentEnemy.SetState(CEnemy.STATE_ATTACK);
-        //_elapsedTimeNoEnemy = 0;
+        _ui.SetSequence(new List<Runes>());
+        _elapsedTimeNoEnemy = 0;
     }
 
     private void Update()

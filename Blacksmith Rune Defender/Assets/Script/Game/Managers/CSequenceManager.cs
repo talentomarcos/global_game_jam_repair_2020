@@ -97,7 +97,6 @@ public class CSequenceManager : MonoBehaviour
                     break;
             }
         }
-        Debug.Log(sequence.Count);
         CSequenceData data = new CSequenceData(_sequenceWaitTime, sequence);
         _openSequences[aLane] = data;
         return data;
@@ -135,11 +134,10 @@ public class CSequenceManager : MonoBehaviour
 
     public void CompleteSequence(int aLane)
     {
-        if (aLane > 0)
+        if (aLane >= 0)
         {
             if (_lanes.Count > aLane)
             {
-                Debug.Log("hello");
                 _lanes[aLane].OnSequenceComplete();
             }
             if (_openSequences.Length > aLane)
