@@ -17,7 +17,7 @@ public class CGameObject : MonoBehaviour {
 
     private string _name;
 
-    public float _radius = .6f;
+    private float _radius = .6f;
 
     private int _type;
 
