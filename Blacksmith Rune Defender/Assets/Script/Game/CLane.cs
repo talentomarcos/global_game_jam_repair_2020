@@ -23,4 +23,11 @@ public class CLane : MonoBehaviour
     {
 
     }
+
+    public void SpawnEnemy()
+    {
+        // To Do: add spawning logic here.
+        CSequenceData data = CSequenceManager.Inst.RequestSequence(_laneIndex);
+        // To do: use data to update mercenary dialog (UI).
+    }
 }
