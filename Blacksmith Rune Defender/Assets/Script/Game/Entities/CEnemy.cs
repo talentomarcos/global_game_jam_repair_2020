@@ -10,6 +10,7 @@ public class CEnemy : CGameObject
     public const int STATE_DEATH = 3;
 
     private SpriteRenderer _spriteRenderer;
+    public CBaseStats _stats;
 
     public override void ApiAwake()
     {

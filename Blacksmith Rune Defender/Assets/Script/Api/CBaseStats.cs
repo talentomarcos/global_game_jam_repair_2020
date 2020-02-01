@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class CBaseStats
 {
+    public int _attack;
     public float _movementSpeed;
     protected int _health;
     public int _maxHealth = 1;

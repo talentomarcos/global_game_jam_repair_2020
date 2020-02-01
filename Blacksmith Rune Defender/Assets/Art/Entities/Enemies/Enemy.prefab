@@ -125,5 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9f796950e9348b9b4274d02d1cc0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.6
   _usesCharacterController: 0
+  _stats:
+    _attack: 10
+    _movementSpeed: 0
+    _maxHealth: 1
+    _knockBack: 0
