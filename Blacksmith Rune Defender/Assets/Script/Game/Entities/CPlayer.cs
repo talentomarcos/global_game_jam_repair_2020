@@ -45,7 +45,6 @@ public class CPlayer : CGameObject
     public override void ApiUpdate()
     {
         base.ApiUpdate();
-        //Debug.Log(_movement);
         UpdateLaneInput();
         UpdateRuneInput();
     }
@@ -88,7 +87,7 @@ public class CPlayer : CGameObject
 
     public void AddRune(Runes aRune)
     {
-        Debug.Log(aRune);
+        //Debug.Log(aRune);
         _currentSequence.Add(aRune);
         if (_currentSequence.Count > CSequenceManager.Inst.GetCurrentRuneCount())
         {
