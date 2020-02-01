@@ -351,6 +351,8 @@ MonoBehaviour:
   _minTimeEnemySpawn: 0.3
   _maxTimeEnemySpawn: 2
   _player: {fileID: 1037570205}
+  _deathMenu: {fileID: 1685229469}
+  _pauseMenu: {fileID: 1858688271}
 --- !u!114 &491807816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,6 +914,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1685229469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9143534684649113301, guid: 9f4e315e05b1048a68b80671ef43fca6,
+    type: 3}
+  m_PrefabInstance: {fileID: 434035511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1716832396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1084,6 +1092,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251c5f601b7ab9646a1fcd0c6d161f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1858688271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3371331572706276418, guid: d7f324a7e62064d028b68a42cb82f2fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 899410375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7956023234457380449
 PrefabInstance:
   m_ObjectHideFlags: 0
