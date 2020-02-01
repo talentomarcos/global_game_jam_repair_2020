@@ -219,8 +219,8 @@ MonoBehaviour:
       type: 3}
     minRuneCountToSpawn: 0
     spawnProbability: 1
-  _minTimeEnemySpawn: 0.3
-  _maxTimeEnemySpawn: 2
+  _minTimeEnemySpawn: {x: 0.5, y: 1}
+  _maxTimeEnemySpawn: {x: 3, y: 4}
   _player: {fileID: 1037570205}
   _deathMenu: {fileID: 1211951282}
   _pauseMenu: {fileID: 451948627}
@@ -981,7 +981,7 @@ PrefabInstance:
     - target: {fileID: 8712775286813442298, guid: d999dd1a70e41324bbbf1c3721ed321b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8712775286813442298, guid: d999dd1a70e41324bbbf1c3721ed321b,
         type: 3}

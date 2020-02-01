@@ -10,12 +10,14 @@ public class CLane : MonoBehaviour
     private CEnemy _currentEnemy;
 
     private float _elapsedTimeNoEnemy = 0;
+    private float _timeToWaitBetweenEnemies;
 
     public CRuneContainerUI _ui;
 
     private void Start()
     {
-        _elapsedTimeNoEnemy = CMath.RandomFloatBetween(0, CLevelManager.Inst.GetCurrentTimeEnemySpawn() + 1);
+        _elapsedTimeNoEnemy = CMath.RandomFloatBetween(0, CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y) + 1);
+        _timeToWaitBetweenEnemies = CLevelManager.Inst.GetCurrentTimeEnemySpawn().y+1;
         _ui.SetSequence(new List<Runes>());
     }
 
@@ -31,6 +33,7 @@ public class CLane : MonoBehaviour
         _currentEnemy.SetDead(true);
         _currentEnemy = null;
         _elapsedTimeNoEnemy = 0;
+        _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
         _ui.SetSequence(new List<Runes>());
     }
 
@@ -50,6 +53,7 @@ public class CLane : MonoBehaviour
         _currentEnemy.SetState(CEnemy.STATE_ATTACK);
         _ui.SetSequence(new List<Runes>());
         _elapsedTimeNoEnemy = 0;
+        _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
     }
 
     private void Update()
@@ -61,9 +65,10 @@ public class CLane : MonoBehaviour
         if (_currentEnemy == null)
         {
             _elapsedTimeNoEnemy += Time.deltaTime;
-            if (_elapsedTimeNoEnemy > CLevelManager.Inst.GetCurrentTimeEnemySpawn())
+            if (_elapsedTimeNoEnemy > _timeToWaitBetweenEnemies)
             {
                 _elapsedTimeNoEnemy = 0;
+                _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
                 SpawnEnemy();
                 return;
             }
@@ -74,6 +79,7 @@ public class CLane : MonoBehaviour
             {
                 _currentEnemy = null;
                 _elapsedTimeNoEnemy = 0;
+                _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
             }
         }
     }

@@ -25,10 +25,10 @@ public class CLevelManager : CStateMachine
 
     public List<EnemyData> _enemies;
 
-    public float _minTimeEnemySpawn = .3f;
-    public float _maxTimeEnemySpawn = 2f;
+    public Vector2 _minTimeEnemySpawn;
+    public Vector2 _maxTimeEnemySpawn;
 
-    private float _currentTimeEnemySpawn;
+    private Vector2 _currentTimeEnemySpawn;
 
     public CPlayer _player;
 
@@ -48,6 +48,7 @@ public class CLevelManager : CStateMachine
         _inst = this;
 
         _currentTimeEnemySpawn = _maxTimeEnemySpawn;
+        GameData.IsPause = false;
     }
 
     // Start is called before the first frame update
@@ -73,7 +74,7 @@ public class CLevelManager : CStateMachine
         _pauseAxisDown = Input.GetAxisRaw("Pause") == 0;
     }
 
-    public float GetCurrentTimeEnemySpawn()
+    public Vector2 GetCurrentTimeEnemySpawn()
     {
         return _currentTimeEnemySpawn;
     }
