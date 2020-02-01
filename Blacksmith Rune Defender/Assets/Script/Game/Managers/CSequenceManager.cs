@@ -30,6 +30,8 @@ public class CSequenceManager : MonoBehaviour
 
     public List<CLane> _lanes;
 
+    private int _completedSeqCounter = 0;
+
     void Awake()
     {
         if (_inst != null && _inst != this)
@@ -140,6 +142,7 @@ public class CSequenceManager : MonoBehaviour
             if (_openSequences.Length > aLane)
             {
                 _openSequences[aLane] = null;
+                _completedSeqCounter++;
             }
         }
     }
