@@ -35,6 +35,14 @@ public class CLane : MonoBehaviour
     /// </summary>
     public void OnSequenceEnded()
     {
+        if (_currentEnemy == null)
+        {
+            return;
+        }
+        if (_currentEnemy.GetState() == CEnemy.STATE_ATTACK)
+        {
+            return;
+        }
         _currentEnemy.SetState(CEnemy.STATE_ATTACK);
         //_elapsedTimeNoEnemy = 0;
     }

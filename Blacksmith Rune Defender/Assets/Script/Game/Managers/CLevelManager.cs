@@ -101,6 +101,7 @@ public class CLevelManager : CStateMachine
                 break;
             case STATE_GAME_OVER:
                 _deathMenu.SetActive(true);
+                GameData.IsPause = true;
                 break;
             default:
                 break;

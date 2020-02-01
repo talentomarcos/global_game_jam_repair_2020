@@ -27,7 +27,7 @@ public class CPlayer : CGameObject
     {
         base.ApiAwake();
         _spriteRend = GetComponentInChildren<SpriteRenderer>();
-
+        _stats.SetHealth(_stats.GetMaxHealth());
     }
 
     // Start is called before the first frame update

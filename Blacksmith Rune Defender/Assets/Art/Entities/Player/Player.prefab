@@ -52,7 +52,7 @@ MonoBehaviour:
   _stats:
     _attack: 0
     _movementSpeed: 0
-    _maxHealth: 1
+    _maxHealth: 100
     _knockBack: 8
 --- !u!1 &8063621959391689904
 GameObject:
