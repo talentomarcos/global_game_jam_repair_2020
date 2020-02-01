@@ -21,6 +21,8 @@ public class CPlayer : CGameObject
     private bool _axisDownEnergy = true;
     //private float _movement;
 
+    public CBaseStats _stats;
+
     public override void ApiAwake()
     {
         base.ApiAwake();
@@ -32,6 +34,7 @@ public class CPlayer : CGameObject
     void Start()
     {
         _lanesXPos.Sort();
+        GameData.LaneAmount = _lanesXPos.Count;
         _currentLane = Mathf.FloorToInt(_lanesXPos.Count / 2f);
         SetX(_lanesXPos[_currentLane]);
     }
@@ -69,7 +72,11 @@ public class CPlayer : CGameObject
 
         if (Input.GetAxisRaw("SendSequence") > 0)
         {
-            // TO DO check request on lane current
+            if (CSequenceManager.Inst.CheckSequence(_currentLane,_currentSequence))
+            {
+                // If the sequence is right
+                CSequenceManager.Inst.CompleteSequence(_currentLane);
+            }
             _currentSequence = new List<Runes>();
         }
         _axisDownSend = Input.GetAxisRaw("SendSequence") == 0;
@@ -79,6 +86,10 @@ public class CPlayer : CGameObject
     {
         Debug.Log(aRune);
         _currentSequence.Add(aRune);
+        if (_currentSequence.Count > CSequenceManager.Inst.GetCurrentRuneCount())
+        {
+            _currentSequence = new List<Runes>();
+        }
     }
 
     private void UpdateRuneInput()
