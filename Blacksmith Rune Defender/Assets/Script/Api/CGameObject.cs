@@ -285,6 +285,10 @@ public class CGameObject : MonoBehaviour {
 
     private void Update()
     {
+        if (GameData.IsPause)
+        {
+            return;
+        }
         ApiUpdate();
     }
 

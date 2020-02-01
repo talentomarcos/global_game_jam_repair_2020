@@ -22,6 +22,8 @@ public class CLevelManager : CStateMachine
     public const int STATE_PAUSE = 1;
     public const int STATE_GAME_OVER = 2;
 
+    public List<EnemyData> _enemies;
+
     void Awake()
     {
         if (_inst != null && _inst != this)
