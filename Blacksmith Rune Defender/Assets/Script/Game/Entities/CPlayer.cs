@@ -45,7 +45,6 @@ public class CPlayer : CGameObject
     public override void ApiUpdate()
     {
         base.ApiUpdate();
-        //Debug.Log(_movement);
         UpdateLaneInput();
         UpdateRuneInput();
     }

@@ -109,7 +109,7 @@ public class CSequenceManager : MonoBehaviour
         {
             return true;
         }
-        if (_openSequences[aLane].GetRuneAmount() == aSequence.Count)
+        if (_openSequences[aLane].GetRuneAmount() != aSequence.Count)
         {
             _openSequences[aLane].waitTime -= _errorTimeReduce;
             return false;
@@ -119,6 +119,7 @@ public class CSequenceManager : MonoBehaviour
         while (!foundError && i < aSequence.Count)
         {
             foundError = aSequence[i] != _openSequences[aLane].GetRuneAt(i);
+            i++;
         }
         if (foundError)
         {
@@ -138,6 +139,7 @@ public class CSequenceManager : MonoBehaviour
         {
             if (_lanes.Count > aLane)
             {
+                Debug.Log("hello");
                 _lanes[aLane].OnSequenceComplete();
             }
             if (_openSequences.Length > aLane)
