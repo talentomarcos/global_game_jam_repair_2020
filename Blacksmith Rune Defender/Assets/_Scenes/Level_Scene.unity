@@ -374,6 +374,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 1453896107}
+--- !u!1 &1485451882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8059721992794148062, guid: 484097bc69377471b9a6d194fba78af1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1509677125}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1509677125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -748,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1485451882}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1650658090
