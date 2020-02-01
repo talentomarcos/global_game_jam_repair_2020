@@ -23,8 +23,12 @@ public class CSequenceManager : MonoBehaviour
 
     public int _startSequenceCount = 2;
     public int _maxSequenceCount = 4;
+    [Tooltip("The amount of time that will be discounted if the player is mistaken. In seconds.")]
+    public float _errorTimeReduce = 1;
 
     private int _currentSequenceCount;
+
+    public List<CLane> _lanes;
 
     void Awake()
     {
@@ -59,6 +63,10 @@ public class CSequenceManager : MonoBehaviour
             if (_openSequences[i].HasEnded())
             {
                 // To do: Notify and do stuff.
+                if (_lanes.Count > i)
+                {
+                    _lanes[i].OnSequenceEnded();
+                }
                 _openSequences[i] = null;
             }
         }
@@ -100,6 +108,7 @@ public class CSequenceManager : MonoBehaviour
         }
         if (_openSequences[aLane].GetRuneAmount() == aSequence.Count)
         {
+            _openSequences[aLane].waitTime -= _errorTimeReduce;
             return false;
         }
         int i = 0;
@@ -108,11 +117,30 @@ public class CSequenceManager : MonoBehaviour
         {
             foundError = aSequence[i] != _openSequences[aLane].GetRuneAt(i);
         }
+        if (foundError)
+        {
+            _openSequences[aLane].waitTime -= _errorTimeReduce;
+        }
         return !foundError;
     }
 
     public int GetCurrentRuneCount()
     {
         return _currentSequenceCount;
+    }
+
+    public void CompleteSequence(int aLane)
+    {
+        if (aLane > 0)
+        {
+            if (_lanes.Count > aLane)
+            {
+                _lanes[aLane].OnSequenceComplete();
+            }
+            if (_openSequences.Length > aLane)
+            {
+                _openSequences[aLane] = null;
+            }
+        }
     }
 }

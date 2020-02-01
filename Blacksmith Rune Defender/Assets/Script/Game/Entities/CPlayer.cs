@@ -75,11 +75,7 @@ public class CPlayer : CGameObject
             if (CSequenceManager.Inst.CheckSequence(_currentLane,_currentSequence))
             {
                 // If the sequence is right
-                // To Do:
-            }
-            else
-            {
-
+                CSequenceManager.Inst.CompleteSequence(_currentLane);
             }
             _currentSequence = new List<Runes>();
         }
