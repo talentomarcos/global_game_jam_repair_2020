@@ -11,9 +11,12 @@ public class CLane : MonoBehaviour
 
     private float _elapsedTimeNoEnemy = 0;
 
+    public CRuneContainerUI _ui;
+
     private void Start()
     {
         _elapsedTimeNoEnemy = CMath.RandomFloatBetween(0, CLevelManager.Inst.GetCurrentTimeEnemySpawn() + 1);
+        _ui.SetSequence(new List<Runes>());
     }
 
     /// <summary>
@@ -116,8 +119,7 @@ public class CLane : MonoBehaviour
             return;
         }
         CSequenceData data = CSequenceManager.Inst.RequestSequence(_laneIndex);
-        // To do: use data to update mercenary dialog (UI).
-        //_mercenary
+        _ui.SetSequence(data.sequence);
     }
 
     private void CreateEnemy(int aIndex)

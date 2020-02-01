@@ -23,6 +23,8 @@ public class CPlayer : CGameObject
 
     public CBaseStats _stats;
 
+    public CRuneContainerUI _ui;
+
     public override void ApiAwake()
     {
         base.ApiAwake();
@@ -37,6 +39,7 @@ public class CPlayer : CGameObject
         GameData.LaneAmount = _lanesXPos.Count;
         _currentLane = Mathf.FloorToInt(_lanesXPos.Count / 2f);
         SetX(_lanesXPos[_currentLane]);
+        _ui.SetSequence(_currentSequence);
     }
 
     public override void ApiUpdate()
@@ -78,6 +81,7 @@ public class CPlayer : CGameObject
                 CSequenceManager.Inst.CompleteSequence(_currentLane);
             }
             _currentSequence = new List<Runes>();
+            _ui.SetSequence(_currentSequence);
         }
         _axisDownSend = Input.GetAxisRaw("SendSequence") == 0;
     }
@@ -90,6 +94,7 @@ public class CPlayer : CGameObject
         {
             _currentSequence = new List<Runes>();
         }
+        _ui.SetSequence(_currentSequence);
     }
 
     private void UpdateRuneInput()
