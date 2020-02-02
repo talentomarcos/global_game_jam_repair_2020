@@ -38,6 +38,7 @@ public class CLane : MonoBehaviour
         _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
         _ui.SetSequence(new List<Runes>());
         _ui.SetClockValue(0);
+        _mercenary.SetState(CMercenary.STATE_ATTACK);
     }
 
     /// <summary>

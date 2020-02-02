@@ -9,14 +9,12 @@ public class CMercenary : CGameObject
     public const int STATE_REQUEST = 2;
     public const int STATE_WRONG_RUNE = 3;
 
-
-    private SpriteRenderer _spriteRenderer;
+    private Animator _anim;
 
     public override void ApiAwake()
     {
         base.ApiAwake();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-
+        _anim = GetComponent<Animator>();
 
         SetState(STATE_IDLE);
     }
@@ -24,38 +22,13 @@ public class CMercenary : CGameObject
     public override void ApiUpdate()
     {
         base.ApiUpdate();
-
-
-
-
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (GetState() == STATE_ATTACK)
         {
-            SetState(STATE_IDLE);
-            return;
+            if (GetStateTime() >= .34f)
+            {
+                SetState(STATE_IDLE);
+            }
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetState(STATE_ATTACK);
-            return;
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetState(STATE_REQUEST);
-            return;
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SetState(STATE_WRONG_RUNE);
-            return;
-
-        }
-#endif
     }
 
     public override void SetState(int aState)
@@ -67,25 +40,23 @@ public class CMercenary : CGameObject
         {
             case STATE_IDLE:
                 {
-                    _spriteRenderer.color = Color.white;
+                    _anim.Play("Idle");
                 }
                 break;
 
             case STATE_ATTACK:
                 {
-                    _spriteRenderer.color = Color.red;
+                    _anim.Play("Attack");
                 }
                 break;
 
             case STATE_REQUEST:
                 {
-                    _spriteRenderer.color = Color.green;
                 }
                 break;
 
             case STATE_WRONG_RUNE:
                 {
-                    _spriteRenderer.color = Color.magenta;
                 }
                 break;
         }
