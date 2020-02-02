@@ -25,6 +25,7 @@ public class CPlayer : CGameObject
 
     private Animator _anim;
 
+    public GameObject _swordParticle;
 
     public override void ApiAwake()
     {
@@ -86,6 +87,7 @@ public class CPlayer : CGameObject
                     // If the sequence is right
                     CSequenceManager.Inst.CompleteSequence(_currentLane);
                     CAudioManager.Inst.PlaySFX("Correct",false,transform);
+                    Instantiate(_swordParticle, GetPos(), Quaternion.identity);
                 }
                 else
                 {

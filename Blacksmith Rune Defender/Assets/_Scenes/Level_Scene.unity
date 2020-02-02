@@ -1095,6 +1095,11 @@ PrefabInstance:
       propertyPath: _lanesXPos.Array.data[2]
       value: 26.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1037570204, guid: d999dd1a70e41324bbbf1c3721ed321b, type: 3}
+      propertyPath: _swordParticle
+      value: 
+      objectReference: {fileID: 5580681510172640667, guid: 79902cb8a4c859f4cbd34a9d5794dfa9,
+        type: 3}
     - target: {fileID: 570910338686811346, guid: d999dd1a70e41324bbbf1c3721ed321b,
         type: 3}
       propertyPath: m_Name
