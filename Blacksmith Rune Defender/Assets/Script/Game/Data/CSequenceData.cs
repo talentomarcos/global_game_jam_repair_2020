@@ -10,6 +10,8 @@ public class CSequenceData
 
     private float _elapsedTime;
 
+    public CRuneContainerUI ui;
+
     public CSequenceData(float aWaitTime, List<Runes> aRunes)
     {
         waitTime = aWaitTime;
@@ -24,6 +26,10 @@ public class CSequenceData
     public void Update()
     {
         _elapsedTime += Time.deltaTime;
+        if (ui != null)
+        {
+            ui.SetClockValue(_elapsedTime / waitTime);
+        }
     }
 
     public bool HasEnded()
