@@ -12,6 +12,9 @@ public class CHeart : CGameObject
     private SpriteRenderer _spriteRenderer;
     public CBaseStats _stats;
 
+    public GameObject _pickUpParticle;
+    public Sprite _brokenHeart;
+
     public override void ApiAwake()
     {
         base.ApiAwake();
@@ -49,7 +52,7 @@ public class CHeart : CGameObject
         }
         else if (GetState() == STATE_DEATH)
         {
-            float delta = GetStateTime() / .5f;
+            float delta = GetStateTime() / 1f;
             if (delta >= 1)
             {
                 Destroy(gameObject);
@@ -80,11 +83,13 @@ public class CHeart : CGameObject
             case STATE_PICKED_UP:
                 {
                     CLevelManager.Inst._player._stats.IncreaseHealth(_stats._attack);
+                    Instantiate(_pickUpParticle, GetPos(), Quaternion.identity);
                 }
                 break;
 
             case STATE_DEATH:
                 {
+                    _spriteRenderer.sprite = _brokenHeart;
                 }
                 break;
         }
