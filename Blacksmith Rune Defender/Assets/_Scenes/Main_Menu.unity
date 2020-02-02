@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102122835}
   - component: {fileID: 102122836}
+  - component: {fileID: 102122837}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -172,6 +173,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &102122837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102122834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2211d433bea4c134e9db0f822dc11b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _credits: {fileID: 102122834}
+  _menu: {fileID: 0}
+  _onEnableSelect: {fileID: 122835397}
+  _onDisableSelect: {fileID: 1298966783}
+  _playMusic: 0
 --- !u!1 &122835395
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,8 +272,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1124016757}
+      - m_Target: {fileID: 102122837}
         m_MethodName: ToogleCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 102122837}
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -301,6 +330,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122835395}
   m_CullTransparentMesh: 0
+--- !u!1 &266239716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 266239718}
+  - component: {fileID: 266239717}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &266239717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266239716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f46ebcb8498af40a917f6baf0b38c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHearingDistance: 30
+  musicVolume: 1
+  sfxVolume: 1
+  _pauseModifier: 0.5
+  _fadeTime: 0.3
+  _musicMixerGroup: {fileID: 7605265270224922213, guid: 39c3a18161035284a9e8a25da7b732f2,
+    type: 2}
+  _sfxMixerGroup: {fileID: 720467363142448858, guid: 39c3a18161035284a9e8a25da7b732f2,
+    type: 2}
+  _pauseMixerGroup: {fileID: -4505736258612907407, guid: 39c3a18161035284a9e8a25da7b732f2,
+    type: 2}
+--- !u!4 &266239718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266239716}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381297518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,6 +1106,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1124016757}
+        m_MethodName: PlayButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1083436388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,6 +1205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _credits: {fileID: 102122834}
+  _menu: {fileID: 0}
+  _onEnableSelect: {fileID: 1083436387}
+  _onDisableSelect: {fileID: 0}
+  _playMusic: 1
 --- !u!1 &1298966781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1293,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1124016757}
         m_MethodName: ToogleCredits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1124016757}
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1324,6 +1433,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1124016757}
         m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1124016757}
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

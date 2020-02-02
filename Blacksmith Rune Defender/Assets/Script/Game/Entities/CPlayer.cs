@@ -73,10 +73,18 @@ public class CPlayer : CGameObject
 
         if (_axisDownSend && Input.GetAxisRaw("SendSequence") > 0)
         {
-            if (CSequenceManager.Inst.CheckSequence(_currentLane,_currentSequence))
+            if (CSequenceManager.Inst.HasRequestInLane(_currentLane))
             {
-                // If the sequence is right
-                CSequenceManager.Inst.CompleteSequence(_currentLane);
+                if (CSequenceManager.Inst.CheckSequence(_currentLane,_currentSequence))
+                {
+                    // If the sequence is right
+                    CSequenceManager.Inst.CompleteSequence(_currentLane);
+                    CAudioManager.Inst.PlaySFX("Correct",false,transform);
+                }
+                else
+                {
+                    CAudioManager.Inst.PlaySFX("Wrong", false, transform);
+                }
             }
             _currentSequence = new List<Runes>();
             _ui.SetSequence(_currentSequence);
@@ -91,6 +99,10 @@ public class CPlayer : CGameObject
         if (_currentSequence.Count > CSequenceManager.Inst.GetCurrentRuneCount())
         {
             _currentSequence = new List<Runes>();
+        }
+        else
+        {
+            //CAudioManager.Inst.PlaySFX("Hammer", false, transform, false, .5f);
         }
         _ui.SetSequence(_currentSequence);
     }
@@ -122,6 +134,21 @@ public class CPlayer : CGameObject
     public void Damage(int aDamage)
     {
         _stats.LowerHealth(aDamage);
+        if (_stats.IsHealthZero())
+        {
+            CAudioManager.Inst.PlaySFX("PlayerDeath", false, null);
+        }
+        else CAudioManager.Inst.PlaySFX("PlayerDamage", false, transform,false,1);
         // To Do damage feedback here.
+    }
+
+    public void SetAxisDown(bool aDown)
+    {
+        _axisDownFire = aDown;
+        _axisDownOccult = aDown;
+        _axisDownStrength = aDown;
+        _axisDownEnergy = aDown;
+        _axisDown = aDown;
+        _axisDownSend = aDown;
     }
 }

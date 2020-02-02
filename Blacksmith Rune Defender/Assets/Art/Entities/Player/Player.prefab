@@ -54,6 +54,7 @@ MonoBehaviour:
     _movementSpeed: 0
     _maxHealth: 100
     _knockBack: 8
+  _ui: {fileID: 0}
 --- !u!1 &8063621959391689904
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,12 +126,12 @@ SpriteRenderer:
   m_SortingLayerID: 2072963427
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b6bd70daccda8184db8c9fd18651c681, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02e93919c6eb8bc4bb06ec81c281b6ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.56, y: 2.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

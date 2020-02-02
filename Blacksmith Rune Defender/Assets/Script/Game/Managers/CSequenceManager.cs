@@ -189,4 +189,9 @@ public class CSequenceManager : MonoBehaviour
     {
         return _completedSeqCounter;
     }
+    
+    public bool HasRequestInLane(int aLane)
+    {
+        return _openSequences[aLane] != null;
+    }
 }

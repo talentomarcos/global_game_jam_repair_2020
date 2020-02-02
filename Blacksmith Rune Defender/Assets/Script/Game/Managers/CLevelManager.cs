@@ -57,6 +57,7 @@ public class CLevelManager : CStateMachine
     {
         SetState(STATE_PLAYING);
         _player._stats.SubscribeOnChangeHealth(OnPlayerChangeHealth);
+        CAudioManager.Inst.PlayMusic("LevelMusic");
     }
 
 
@@ -104,6 +105,7 @@ public class CLevelManager : CStateMachine
             case STATE_GAME_OVER:
                 _deathMenu.SetActive(true);
                 GameData.IsPause = true;
+                CAudioManager.Inst.PlayMusic("GameOverMusic");
                 break;
             default:
                 break;
@@ -127,6 +129,7 @@ public class CLevelManager : CStateMachine
         {
             SetState(STATE_PLAYING);
         }
+        _player.SetAxisDown(false);
     }
 
     public void TogglePause()

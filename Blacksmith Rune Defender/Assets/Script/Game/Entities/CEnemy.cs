@@ -42,9 +42,16 @@ public class CEnemy : CGameObject
         }
         else if (GetState() == STATE_ATTACK)
         {
-            if (GetStateTime() >= 1.7f)
+            if (GetStateTime() >= 1f)
             {
-                SetDead(true);
+                SetState(STATE_DEATH);
+            }
+        }
+        else if (GetState() == STATE_DEATH)
+        {
+            if (GetStateTime() >= .5f)
+            {
+                Destroy(gameObject);
             }
         }
     }
@@ -57,6 +64,7 @@ public class CEnemy : CGameObject
         {
             case STATE_SPAWN:
                 {
+                    CAudioManager.Inst.PlaySFX("WerewolfSpawn", false, transform,false,1);
                     _spriteRenderer.color = Color.black.WithAlpha(0);
                 }
                 break;
@@ -77,7 +85,6 @@ public class CEnemy : CGameObject
             case STATE_DEATH:
                 {
                     _spriteRenderer.color = Color.red;
-                    Destroy(gameObject);
                 }
                 break;
         }
@@ -88,6 +95,7 @@ public class CEnemy : CGameObject
         base.SetDead(aIsDead);
         if (aIsDead)
         {
+            CAudioManager.Inst.PlaySFX("WerewolfDeath", false, null, false, 1);
             SetState(STATE_DEATH);
         }
     }
