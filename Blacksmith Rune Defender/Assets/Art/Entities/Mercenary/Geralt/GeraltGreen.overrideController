@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GeraltGreen
+  m_Controller: {fileID: 9100000, guid: 73753c00b30f20f4a88f980131f0db01, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: ebaf74bc3ffa5dd47b7fc00c9fb66eba, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b2893ad87d2bb7c478d48b13dc526bec, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 62f8591841f5341448a82253e634815c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bd8f6e8424a21de4c932ee9f32423c4b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 16c5be0faf2184b4ba7bc533b7af9005, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ae07757b5e6ba474697d019087746301, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3fc142817ce4dfb4a9b325cdf9938507, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5b1211019f9bc8447b049a4eb6d48777, type: 2}
