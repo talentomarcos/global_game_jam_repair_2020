@@ -68,7 +68,7 @@ public class CLevelManager : CStateMachine
 
     private void UpdatePauseInput()
     {
-        if (!_pauseAxisDown && Input.GetAxisRaw("Pause")>0)
+        if (_pauseAxisDown && Input.GetAxisRaw("Pause")>0)
         {
             TogglePause();
         }
