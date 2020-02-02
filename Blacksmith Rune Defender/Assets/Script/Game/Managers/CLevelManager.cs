@@ -38,6 +38,10 @@ public class CLevelManager : CStateMachine
 
     private bool _pauseAxisDown = true;
 
+    private CCamera2D _camera;
+    public GameObject _camFollowObj;
+    private CShakeManager _shakeManager;
+
     void Awake()
     {
         if (_inst != null && _inst != this)
@@ -58,6 +62,10 @@ public class CLevelManager : CStateMachine
         SetState(STATE_PLAYING);
         _player._stats.SubscribeOnChangeHealth(OnPlayerChangeHealth);
         CAudioManager.Inst.PlayMusic("LevelMusic");
+
+        _camera = Camera.main.GetComponent<CCamera2D>();
+        _camera.SetFollow(_camFollowObj);
+        _shakeManager = _camera.GetComponent<CShakeManager>();
     }
 
 
@@ -146,5 +154,10 @@ public class CLevelManager : CStateMachine
     {
         _currentTimeEnemySpawn = new Vector2(Mathf.Clamp((_currentTimeEnemySpawn.x - _timeEnemySpawnDecrese.x), _minTimeEnemySpawn.x, _maxTimeEnemySpawn.x),
             Mathf.Clamp((_currentTimeEnemySpawn.y - _timeEnemySpawnDecrese.y), _minTimeEnemySpawn.y, _maxTimeEnemySpawn.y));
+    }
+
+    public void AddScreenshake(float aIntensity, float aDuration, bool aIsInfinite = false)
+    {
+        _shakeManager.AddShake(aIntensity, aDuration, aIsInfinite);
     }
 }

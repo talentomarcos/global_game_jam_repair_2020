@@ -409,7 +409,10 @@ public class CAudioManager : MonoBehaviour
         source.pitch += (Random.value - 0.5f) * 2 * addedRandomPitch + addedPitch;
         source.dopplerLevel = 0f; //sets doppler to 0 to cancel pitch distortions on movement
         source.outputAudioMixerGroup = _sfxMixerGroup;
-        DontDestroyOnLoad(source.gameObject);
+        if (parent == null)
+        {
+            DontDestroyOnLoad(source.gameObject);
+        }
         source.Play();
 
         if (_isLoggingAudio)

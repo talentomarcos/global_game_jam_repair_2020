@@ -146,6 +146,8 @@ public class CLane : MonoBehaviour
         GameObject enemy = Instantiate(CLevelManager.Inst._enemies[aIndex].prefab,transform);
         _currentEnemy = enemy.GetComponent<CEnemy>();
         enemy.transform.position = _enemySpawnPonint.position;
+        _currentEnemy._attackAnim._initialPos = _enemySpawnPonint.localPosition;
+        _currentEnemy._attackAnim._endPos = _anvil.transform.localPosition;
     }
 
     public void SetAnvilVisible(bool aVisible)

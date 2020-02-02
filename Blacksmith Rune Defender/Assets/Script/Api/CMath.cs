@@ -208,4 +208,19 @@ public static float dist(float aX1, float aY1, float aX2, float aY2)
         }
         return aValue;
     }
+
+    /// <summary>
+    /// Determines if a Point is in a rectangle. Rect with pivot on top-left.
+    /// </summary>
+    /// <param name="aX"></param>
+    /// <param name="aY"></param>
+    /// <param name="aRectX"></param>
+    /// <param name="aRectY"></param>
+    /// <param name="aRectWidth"></param>
+    /// <param name="aRectHeight"></param>
+    /// <returns></returns>
+    public static bool pointInRect2D(float aX, float aY, float aRectX, float aRectY, float aRectWidth, float aRectHeight)
+    {
+        return (aX >= aRectX && aX <= aRectX + aRectWidth && aY >= aRectY && aY <= aRectY + aRectHeight);
+    }
 }

@@ -13,6 +13,10 @@ public class CEnemy : CGameObject
     private Animator _anim;
     public CBaseStats _stats;
 
+    public CPositionAnimate _attackAnim;
+
+    public GameObject _spawnParticles;
+
     public override void ApiAwake()
     {
         base.ApiAwake();
@@ -44,8 +48,9 @@ public class CEnemy : CGameObject
         }
         else if (GetState() == STATE_ATTACK)
         {
-            if (GetStateTime() >= 1f)
+            if (_attackAnim.IsFinished())
             {
+                SetLocalPos(_attackAnim._initialPos);
                 SetState(STATE_DEATH);
             }
         }
@@ -66,6 +71,8 @@ public class CEnemy : CGameObject
         {
             case STATE_SPAWN:
                 {
+                    CLevelManager.Inst.AddScreenshake(.05f, .5f);
+                    Instantiate(_spawnParticles, transform);
                     CAudioManager.Inst.PlaySFX("WerewolfSpawn", false, transform,false,1);
                     _spriteRenderer.color = Color.black.WithAlpha(0);
                 }
@@ -79,6 +86,7 @@ public class CEnemy : CGameObject
 
             case STATE_ATTACK:
                 {
+                    _attackAnim.StartAnimation();
                     CLevelManager.Inst._player.Damage(_stats._attack);
                     _anim.Play("Attack");
                 }

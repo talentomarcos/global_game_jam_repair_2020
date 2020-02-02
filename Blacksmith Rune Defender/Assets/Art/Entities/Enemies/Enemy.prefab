@@ -106,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 474235802096418128}
   - component: {fileID: 474235802096418129}
+  - component: {fileID: 28680100470341706}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -146,3 +147,69 @@ MonoBehaviour:
     _movementSpeed: 0
     _maxHealth: 1
     _knockBack: 0
+  _attackAnim: {fileID: 28680100470341706}
+  _spawnParticles: {fileID: 4398693873383976296, guid: f0d731f5c0d00a545b533cbbddd491c9,
+    type: 3}
+--- !u!114 &28680100470341706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474235802096417967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61671c3e22e5e5a4f9dc1850436dd20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationTime: 1
+  _delayTime: 0
+  _evaluationType: 4
+  _customCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.26530612
+      outSlope: -0.26530612
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.4
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.93749976
+    - serializedVersion: 3
+      time: 0.6
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.3275862
+      outSlope: -0.3275862
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.725
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _initialPos: {x: 0, y: 0, z: 0}
+  _endPos: {x: 0, y: 0, z: 0}
+  _useRecTf: 0
+  _playOnAwake: 0
+  _loop: 0
+  _unscaledDeltaTime: 0

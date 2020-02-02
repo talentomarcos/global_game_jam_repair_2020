@@ -89,6 +89,8 @@ public class CPlayer : CGameObject
                 }
                 else
                 {
+                    CLevelManager.Inst.AddScreenshake(.3f, .2f);
+
                     CAudioManager.Inst.PlaySFX("Wrong", false, transform);
                 }
             }
@@ -146,6 +148,7 @@ public class CPlayer : CGameObject
             CAudioManager.Inst.PlaySFX("PlayerDeath", false, null);
         }
         else CAudioManager.Inst.PlaySFX("PlayerDamage", false, transform,false,1);
+        CLevelManager.Inst.AddScreenshake(.7f, .7f);
         // To Do damage feedback here.
     }
 
