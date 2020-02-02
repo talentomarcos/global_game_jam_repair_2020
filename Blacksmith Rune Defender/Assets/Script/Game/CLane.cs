@@ -76,6 +76,7 @@ public class CLane : MonoBehaviour
         _elapsedTimeNoEnemy = 0;
         _ui.SetClockValue(0);
         _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
+        _mercenary.SetState(CMercenary.STATE_IDLE);
     }
 
     private void Update()
@@ -170,6 +171,7 @@ public class CLane : MonoBehaviour
         CSequenceData data = CSequenceManager.Inst.RequestSequence(_laneIndex);
         data.ui = _ui;
         _ui.SetSequence(data.sequence);
+        _mercenary.SetState(CMercenary.STATE_REQUEST);
     }
 
     private void CreateEnemy(int aIndex)

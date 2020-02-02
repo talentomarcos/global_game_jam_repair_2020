@@ -11,6 +11,8 @@ public class CMercenary : CGameObject
 
     private Animator _anim;
 
+    public GameObject _explosion;
+
     public override void ApiAwake()
     {
         base.ApiAwake();
@@ -52,6 +54,7 @@ public class CMercenary : CGameObject
 
             case STATE_REQUEST:
                 {
+                    _anim.Play("Request");
                 }
                 break;
 
@@ -60,5 +63,10 @@ public class CMercenary : CGameObject
                 }
                 break;
         }
+    }
+
+    public void SetExplotionActive()
+    {
+        _explosion.SetActive(true);
     }
 }
