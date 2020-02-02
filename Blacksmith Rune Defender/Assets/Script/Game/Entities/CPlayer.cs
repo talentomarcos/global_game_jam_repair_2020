@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class CPlayer : CGameObject
@@ -12,8 +13,6 @@ public class CPlayer : CGameObject
 
     private List<Runes> _currentSequence = new List<Runes>();
 
-    private SpriteRenderer _spriteRend;
-
     private bool _axisDownFire = true;
     private bool _axisDownOccult = true;
     private bool _axisDownStrength = true;
@@ -24,10 +23,13 @@ public class CPlayer : CGameObject
 
     public CRuneContainerUI _ui;
 
+    private Animator _anim;
+
+
     public override void ApiAwake()
     {
         base.ApiAwake();
-        _spriteRend = GetComponentInChildren<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
         _stats.SetHealth(_stats.GetMaxHealth());
     }
 
@@ -103,6 +105,7 @@ public class CPlayer : CGameObject
         else
         {
             //CAudioManager.Inst.PlaySFX("Hammer", false, transform, false, .5f);
+            _anim.SetTrigger("Hammer");
         }
         _ui.SetSequence(_currentSequence);
     }

@@ -10,6 +10,7 @@ public class CEnemy : CGameObject
     public const int STATE_DEATH = 3;
 
     private SpriteRenderer _spriteRenderer;
+    private Animator _anim;
     public CBaseStats _stats;
 
     public override void ApiAwake()
@@ -17,6 +18,7 @@ public class CEnemy : CGameObject
         base.ApiAwake();
 
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _anim = GetComponent<Animator>();
 
         SetState(STATE_SPAWN);
         return;
@@ -71,20 +73,20 @@ public class CEnemy : CGameObject
 
             case STATE_IDLE:
                 {
-                    //_spriteRenderer.color = Color.yellow;
+                    _anim.Play("Idle");
                 }
                 break;
 
             case STATE_ATTACK:
                 {
-                    _spriteRenderer.color = Color.green;
                     CLevelManager.Inst._player.Damage(_stats._attack);
+                    _anim.Play("Attack");
                 }
                 break;
 
             case STATE_DEATH:
                 {
-                    _spriteRenderer.color = Color.red;
+                    _anim.Play("Death");
                 }
                 break;
         }
