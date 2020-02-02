@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 1
   source: {fileID: 8300000, guid: 27d0d316f3c7c914f866eee070e4d457, type: 3}
-  _relativeVolume: 1
+  _relativeVolume: 0.6
   _enabled: 1

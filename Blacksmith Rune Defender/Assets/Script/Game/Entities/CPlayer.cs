@@ -110,7 +110,7 @@ public class CPlayer : CGameObject
         }
         else
         {
-            //CAudioManager.Inst.PlaySFX("Hammer", false, transform, false, .5f);
+            CAudioManager.Inst.PlaySFX("Hammer", false, transform, false, .5f);
             _anim.SetTrigger("Hammer");
         }
         _ui.SetSequence(_currentSequence);
