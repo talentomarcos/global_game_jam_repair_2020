@@ -23,6 +23,6 @@ public class CRuneContainerUI : MonoBehaviour
 
     public void SetClockValue(float aValue)
     {
-        _clock.value = aValue;
+        _clock.value = 1-aValue;
     }
 }

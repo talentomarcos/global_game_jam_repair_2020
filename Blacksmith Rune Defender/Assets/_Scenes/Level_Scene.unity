@@ -1066,8 +1066,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: db1cd3cc5f6f4524a9b6eac79b3808e8,
-        type: 2}
+      objectReference: {fileID: 9100000, guid: 73753c00b30f20f4a88f980131f0db01, type: 2}
     - target: {fileID: 8499308431905152392, guid: 41ea54004df0390458f79593172da5fd,
         type: 3}
       propertyPath: _laneIndex
@@ -1357,6 +1356,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5112493872592352502, guid: 41ea54004df0390458f79593172da5fd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: db1cd3cc5f6f4524a9b6eac79b3808e8,
+        type: 2}
     - target: {fileID: 8499308431905152392, guid: 41ea54004df0390458f79593172da5fd,
         type: 3}
       propertyPath: _ui

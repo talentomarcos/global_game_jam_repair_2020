@@ -46,7 +46,7 @@ public class CMenuAux : MonoBehaviour
         CAudioManager.Inst.PlaySFX("Button", false, null, false,.1f);
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         _onEnableSelect.Select();
         _onEnableSelect.OnSelect(null);

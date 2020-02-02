@@ -44,6 +44,8 @@ public class CLevelManager : CStateMachine
 
     public GameObject _heart;
 
+    private bool _startedEndRoutine = false;
+
     void Awake()
     {
         if (_inst != null && _inst != this)
@@ -94,9 +96,10 @@ public class CLevelManager : CStateMachine
 
     private void OnPlayerChangeHealth(int aValue)
     {
-        if (_player._stats.IsHealthZero())
+        if (_player._stats.IsHealthZero() && !_startedEndRoutine)
         {
-            SetState(STATE_GAME_OVER);
+            //SetState(STATE_GAME_OVER);
+            StartCoroutine("EndRoutine");
         }
     }
 
@@ -161,5 +164,14 @@ public class CLevelManager : CStateMachine
     public void AddScreenshake(float aIntensity, float aDuration, bool aIsInfinite = false)
     {
         _shakeManager.AddShake(aIntensity, aDuration, aIsInfinite);
+    }
+
+    private IEnumerator EndRoutine()
+    {
+        _startedEndRoutine = true;
+        GameData.IsPause = true;
+
+        yield return new WaitForSeconds(2f);
+        SetState(STATE_GAME_OVER);
     }
 }

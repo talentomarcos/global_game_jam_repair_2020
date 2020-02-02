@@ -147,6 +147,7 @@ public class CPlayer : CGameObject
         if (_stats.IsHealthZero())
         {
             CAudioManager.Inst.PlaySFX("PlayerDeath", false, null);
+            _anim.Play("Death");
         }
         else CAudioManager.Inst.PlaySFX("PlayerDamage", false, transform,false,1);
         CLevelManager.Inst.AddScreenshake(.7f, .7f);

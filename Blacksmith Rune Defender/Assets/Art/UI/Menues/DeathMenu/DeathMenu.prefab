@@ -155,7 +155,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1071176461781029789}
+      - m_Target: {fileID: 1169776081655575577}
         m_MethodName: GoToScene
         m_Mode: 3
         m_Arguments:
@@ -166,7 +166,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1071176461781029789}
+      - m_Target: {fileID: 1169776081655575577}
         m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1071176461781029789}
+      - m_Target: {fileID: 1169776081655575577}
         m_MethodName: GoToScene
         m_Mode: 3
         m_Arguments:
@@ -306,7 +306,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1071176461781029789}
+      - m_Target: {fileID: 1169776081655575577}
         m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
@@ -555,7 +555,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4289872785740383200}
-  - component: {fileID: 1071176461781029789}
+  - component: {fileID: 1169776081655575577}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -584,7 +584,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -170}
   m_SizeDelta: {x: 100, y: 155}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1071176461781029789
+--- !u!114 &1169776081655575577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6364578455030935753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2211d433bea4c134e9db0f822dc11b4a, type: 3}
+  m_Script: {fileID: 11500000, guid: ff132c42983b69449b061f15830a72f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _credits: {fileID: 0}
