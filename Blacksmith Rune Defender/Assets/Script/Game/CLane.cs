@@ -35,6 +35,7 @@ public class CLane : MonoBehaviour
         _elapsedTimeNoEnemy = 0;
         _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
         _ui.SetSequence(new List<Runes>());
+        _ui.SetClockValue(0);
     }
 
     /// <summary>
@@ -53,6 +54,7 @@ public class CLane : MonoBehaviour
         _currentEnemy.SetState(CEnemy.STATE_ATTACK);
         _ui.SetSequence(new List<Runes>());
         _elapsedTimeNoEnemy = 0;
+        _ui.SetClockValue(0);
         _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
     }
 
@@ -68,6 +70,7 @@ public class CLane : MonoBehaviour
             if (_elapsedTimeNoEnemy > _timeToWaitBetweenEnemies)
             {
                 _elapsedTimeNoEnemy = 0;
+                _ui.SetClockValue(0);
                 _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
                 SpawnEnemy();
                 return;
@@ -79,6 +82,7 @@ public class CLane : MonoBehaviour
             {
                 _currentEnemy = null;
                 _elapsedTimeNoEnemy = 0;
+                _ui.SetClockValue(0);
                 _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
             }
         }
@@ -127,6 +131,7 @@ public class CLane : MonoBehaviour
             return;
         }
         CSequenceData data = CSequenceManager.Inst.RequestSequence(_laneIndex);
+        data.ui = _ui;
         _ui.SetSequence(data.sequence);
     }
 

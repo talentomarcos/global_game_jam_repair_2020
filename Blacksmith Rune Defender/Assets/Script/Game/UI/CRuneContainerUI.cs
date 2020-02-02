@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CRuneContainerUI : MonoBehaviour
 {
     public List<CRuneUI> _runes;
+    public Slider _clock;
 
     public void SetSequence(List<Runes> aSequence)
     {
@@ -17,5 +19,10 @@ public class CRuneContainerUI : MonoBehaviour
         {
             _runes[i].gameObject.SetActive(false);
         }
+    }
+
+    public void SetClockValue(float aValue)
+    {
+        _clock.value = aValue;
     }
 }
