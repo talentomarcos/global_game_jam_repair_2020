@@ -8,6 +8,7 @@ public class CLane : MonoBehaviour
     public CMercenary _mercenary;
     public Transform _enemySpawnPonint;
     private CEnemy _currentEnemy;
+    private CHeart _currentHeart;
 
     private float _elapsedTimeNoEnemy = 0;
     private float _timeToWaitBetweenEnemies;
@@ -28,12 +29,20 @@ public class CLane : MonoBehaviour
     /// </summary>
     public void OnSequenceComplete()
     {
-        if (_currentEnemy == null)
+        if (_currentEnemy == null && _currentHeart == null)
         {
             return;
         }
-        _currentEnemy.SetDead(true);
-        _currentEnemy = null;
+        if (_currentHeart != null)
+        {
+            _currentHeart.SetState(CHeart.STATE_PICKED_UP);
+            _currentHeart = null;
+        }
+        else
+        {
+            _currentEnemy.SetDead(true);
+            _currentEnemy = null;
+        }
         _elapsedTimeNoEnemy = 0;
         _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
         _ui.SetSequence(new List<Runes>());
@@ -46,15 +55,23 @@ public class CLane : MonoBehaviour
     /// </summary>
     public void OnSequenceEnded()
     {
-        if (_currentEnemy == null)
+        if (_currentEnemy == null && _currentHeart == null)
         {
             return;
         }
-        if (_currentEnemy.GetState() == CEnemy.STATE_ATTACK)
+        if (_currentHeart != null)
         {
-            return;
+            _currentHeart.SetState(CHeart.STATE_DEATH);
+            _currentHeart = null;
         }
-        _currentEnemy.SetState(CEnemy.STATE_ATTACK);
+        else
+        {
+            if (_currentEnemy.GetState() == CEnemy.STATE_ATTACK)
+            {
+                return;
+            }
+            _currentEnemy.SetState(CEnemy.STATE_ATTACK);
+        }
         _ui.SetSequence(new List<Runes>());
         _elapsedTimeNoEnemy = 0;
         _ui.SetClockValue(0);
@@ -67,7 +84,7 @@ public class CLane : MonoBehaviour
         {
             return;
         }
-        if (_currentEnemy == null)
+        if (_currentEnemy == null && _currentHeart == null)
         {
             _elapsedTimeNoEnemy += Time.deltaTime;
             if (_elapsedTimeNoEnemy > _timeToWaitBetweenEnemies)
@@ -81,9 +98,16 @@ public class CLane : MonoBehaviour
         }
         else
         {
-            if (_currentEnemy.IsDead())
+            if (_currentEnemy != null && _currentEnemy.IsDead())
             {
                 _currentEnemy = null;
+                _elapsedTimeNoEnemy = 0;
+                _ui.SetClockValue(0);
+                _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
+            }
+            if (_currentHeart != null &&  _currentHeart.IsDead())
+            {
+                _currentHeart = null;
                 _elapsedTimeNoEnemy = 0;
                 _ui.SetClockValue(0);
                 _timeToWaitBetweenEnemies = CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y);
@@ -93,45 +117,55 @@ public class CLane : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        float maxProbab = 0;
-        int maxProbIndex = 0;
-        float highestProb = 0;
-        List<EnemyData> enemies = CLevelManager.Inst._enemies;
-        for (int i = 0; i < enemies.Count; i++)
+        float randSpawn = Random.value;
+        if (randSpawn < .02f)
         {
-            if (enemies[i].IsValidEnemy(CSequenceManager.Inst.GetCurrentRuneCount()))
-            {
-                maxProbab += enemies[i].spawnProbability;
-                if (highestProb < enemies[i].spawnProbability)
-                {
-                    highestProb = enemies[i].spawnProbability;
-                    maxProbIndex = i;
-                }
-            }
-        }
-        float rand = Random.value;
-        int spawnIndex = -1;
-        float spawnProb = 1;
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            float prob = enemies[i].spawnProbability / maxProbab;
-            if (rand <= prob && spawnProb > prob)
-            {
-                spawnIndex = i;
-                spawnProb = prob;
-            }
-        }
-        if (spawnIndex < 0)
-        {
-            CreateEnemy(maxProbIndex);
+            GameObject heart = Instantiate(CLevelManager.Inst._heart, transform);
+            _currentHeart = heart.GetComponent<CHeart>();
+            heart.transform.position = _enemySpawnPonint.position;
         }
         else
         {
-            CreateEnemy(spawnIndex);
-        }
-        if (_currentEnemy == null)
-        {
-            return;
+            float maxProbab = 0;
+            int maxProbIndex = 0;
+            float highestProb = 0;
+            List<EnemyData> enemies = CLevelManager.Inst._enemies;
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].IsValidEnemy(CSequenceManager.Inst.GetCurrentRuneCount()))
+                {
+                    maxProbab += enemies[i].spawnProbability;
+                    if (highestProb < enemies[i].spawnProbability)
+                    {
+                        highestProb = enemies[i].spawnProbability;
+                        maxProbIndex = i;
+                    }
+                }
+            }
+            float rand = Random.value;
+            int spawnIndex = -1;
+            float spawnProb = 1;
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                float prob = enemies[i].spawnProbability / maxProbab;
+                if (rand <= prob && spawnProb > prob)
+                {
+                    spawnIndex = i;
+                    spawnProb = prob;
+                }
+            }
+            if (spawnIndex < 0)
+            {
+                CreateEnemy(maxProbIndex);
+            }
+            else
+            {
+                CreateEnemy(spawnIndex);
+            }
+            if (_currentEnemy == null)
+            {
+                return;
+            }
         }
         CSequenceData data = CSequenceManager.Inst.RequestSequence(_laneIndex);
         data.ui = _ui;
