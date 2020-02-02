@@ -356,10 +356,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<style=\"Title\"><size=200%>--Credits--</style>\n\n<style=\"Title\"><size=150%>-Programming-</style>\nEva
-    Correa\nMarcos Talento\n\n<style=\"Title\"><size=150%>-Art-</style>\nLeandro
-    Camara\nYomira Mart\xEDnez\n\n<style=\"Title\"><size=150%>-Game Design-</style>\nGonzalo
-    Mart\xEDnez\n"
+  m_text: "<style=\"Title\"><size=200%><color=#DB7000>--Credits--</color></style>\n\n<style=\"Title\"><size=150%><color=#FFBE7A>-Programming-</color></style>\nEva
+    Correa\nMarcos Talento\n\n<style=\"Title\"><size=150%><color=#FFBE7A>-Art-</color></style>\nLeandro
+    Camara\nYomira Mart\xEDnez\n\n<style=\"Title\"><size=150%><color=#FFBE7A>-Game
+    Design-</color></style>\nGonzalo Mart\xEDnez\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f6d25ba9a0bb42a7932105c74f34b98, type: 2}
   m_sharedMaterial: {fileID: 559023134600093506, guid: 6f6d25ba9a0bb42a7932105c74f34b98,
@@ -369,8 +369,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294638330
+  m_fontColor: {r: 0.98039216, g: 0.98039216, b: 0.98039216, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -525,8 +525,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294177779
-  m_fontColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    rgba: 4294638330
+  m_fontColor: {r: 0.98039216, g: 0.98039216, b: 0.98039216, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -683,8 +683,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294177779
-  m_fontColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    rgba: 4294638330
+  m_fontColor: {r: 0.98039216, g: 0.98039216, b: 0.98039216, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -839,8 +839,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294638330
+  m_fontColor: {r: 0.98039216, g: 0.98039216, b: 0.98039216, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1602,8 +1602,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294177779
-  m_fontColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    rgba: 4294638330
+  m_fontColor: {r: 0.98039216, g: 0.98039216, b: 0.98039216, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

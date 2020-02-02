@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class CMenuAux : MonoBehaviour
 {
     public GameObject _credits;
+    public GameObject _menu;
 
     private void Start()
     {
+        Debug.Log("Audio Manager !!!");
         //CAudioManager.Inst.PlayMusic("Music");
     }
 
@@ -26,5 +28,10 @@ public class CMenuAux : MonoBehaviour
     public void ToogleCredits()
     {
         _credits.SetActive(!_credits.activeSelf);
+    }
+
+    public void ToogleMenu()
+    {
+        _menu.SetActive(!_menu.activeSelf);
     }
 }
