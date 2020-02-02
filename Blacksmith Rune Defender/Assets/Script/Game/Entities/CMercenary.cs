@@ -7,7 +7,7 @@ public class CMercenary : CGameObject
     public const int STATE_IDLE = 0;
     public const int STATE_ATTACK = 1;
     public const int STATE_REQUEST = 2;
-    public const int STATE_WRONG_RUNE = 3;
+    public const int STATE_ANGRY = 3;
 
     private Animator _anim;
 
@@ -29,6 +29,7 @@ public class CMercenary : CGameObject
             if (GetStateTime() >= .34f)
             {
                 SetState(STATE_IDLE);
+                return;
             }
         }
     }
@@ -58,8 +59,9 @@ public class CMercenary : CGameObject
                 }
                 break;
 
-            case STATE_WRONG_RUNE:
+            case STATE_ANGRY:
                 {
+                    _anim.Play("Angry");
                 }
                 break;
         }
