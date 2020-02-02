@@ -58,8 +58,10 @@ public class CPlayer : CGameObject
         {
             if (_currentLane + 1 < _lanesXPos.Count)
             {
+                CSequenceManager.Inst._lanes[_currentLane].SetAnvilVisible(true);
                 _currentLane++;
                 SetX(_lanesXPos[_currentLane]);
+                CSequenceManager.Inst._lanes[_currentLane].SetAnvilVisible(false);
             }
         }
         // Left
@@ -67,8 +69,10 @@ public class CPlayer : CGameObject
         {
             if (_currentLane - 1 >= 0)
             {
+                CSequenceManager.Inst._lanes[_currentLane].SetAnvilVisible(true);
                 _currentLane--;
                 SetX(_lanesXPos[_currentLane]);
+                CSequenceManager.Inst._lanes[_currentLane].SetAnvilVisible(false);
             }
         }
         _axisDown = xInput == 0;

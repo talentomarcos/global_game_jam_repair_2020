@@ -14,6 +14,8 @@ public class CLane : MonoBehaviour
 
     public CRuneContainerUI _ui;
 
+    public GameObject _anvil;
+
     private void Start()
     {
         _elapsedTimeNoEnemy = CMath.RandomFloatBetween(0, CMath.RandomFloatBetween(CLevelManager.Inst.GetCurrentTimeEnemySpawn().x, CLevelManager.Inst.GetCurrentTimeEnemySpawn().y) + 1);
@@ -144,5 +146,10 @@ public class CLane : MonoBehaviour
         GameObject enemy = Instantiate(CLevelManager.Inst._enemies[aIndex].prefab,transform);
         _currentEnemy = enemy.GetComponent<CEnemy>();
         enemy.transform.position = _enemySpawnPonint.position;
+    }
+
+    public void SetAnvilVisible(bool aVisible)
+    {
+        _anvil.SetActive(aVisible);
     }
 }

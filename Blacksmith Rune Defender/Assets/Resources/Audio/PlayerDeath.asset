@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerDeath
   m_EditorClassIdentifier: 
   _type: 0
-  source: {fileID: 8300000, guid: 82907df53f8710447a5b361503be5b4e, type: 3}
+  source: {fileID: 8300000, guid: af84f0f19aee7334885df088ff6c479e, type: 3}
   _relativeVolume: 1
   _enabled: 1
