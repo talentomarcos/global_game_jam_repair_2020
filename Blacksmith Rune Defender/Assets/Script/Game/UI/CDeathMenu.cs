@@ -15,7 +15,7 @@ public class CDeathMenu : CMenuAux
 
     public IEnumerator WaitToEnableButtons()
     {
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(0f);
 
         _onEnableSelect.Select();
         _onEnableSelect.OnSelect(null);

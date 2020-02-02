@@ -7,6 +7,7 @@ public class CLane : MonoBehaviour
     public int _laneIndex;
     public CMercenary _mercenary;
     public Transform _enemySpawnPonint;
+    public Transform _enemyEndPonint;
     private CEnemy _currentEnemy;
     private CHeart _currentHeart;
 
@@ -184,7 +185,7 @@ public class CLane : MonoBehaviour
         _currentEnemy = enemy.GetComponent<CEnemy>();
         enemy.transform.position = _enemySpawnPonint.position;
         _currentEnemy._attackAnim._initialPos = _enemySpawnPonint.localPosition;
-        _currentEnemy._attackAnim._endPos = _anvil.transform.localPosition;
+        _currentEnemy._attackAnim._endPos = _enemyEndPonint.localPosition;
     }
 
     public void SetAnvilVisible(bool aVisible)
