@@ -256,6 +256,7 @@ MonoBehaviour:
   _deathMenu: {fileID: 1211951282}
   _pauseMenu: {fileID: 451948627}
   _camFollowObj: {fileID: 289125435}
+  _heart: {fileID: 5786699375506599196, guid: 3d7056590111e7741b011336fc01d3e4, type: 3}
 --- !u!114 &491807816
 MonoBehaviour:
   m_ObjectHideFlags: 0

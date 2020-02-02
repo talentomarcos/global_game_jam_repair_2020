@@ -42,6 +42,8 @@ public class CLevelManager : CStateMachine
     public GameObject _camFollowObj;
     private CShakeManager _shakeManager;
 
+    public GameObject _heart;
+
     void Awake()
     {
         if (_inst != null && _inst != this)
