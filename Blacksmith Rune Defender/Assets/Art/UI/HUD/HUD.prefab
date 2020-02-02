@@ -734,7 +734,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1820, y: -980}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7577311447869497642
 GameObject:
@@ -2415,12 +2415,12 @@ PrefabInstance:
     - target: {fileID: 3370981088656728228, guid: d7f324a7e62064d028b68a42cb82f2fb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1819.9999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3370981088656728228, guid: d7f324a7e62064d028b68a42cb82f2fb,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 980
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3370981088656728228, guid: d7f324a7e62064d028b68a42cb82f2fb,
         type: 3}
@@ -2545,12 +2545,12 @@ PrefabInstance:
     - target: {fileID: 6283608229362066495, guid: 9f4e315e05b1048a68b80671ef43fca6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1819.9999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6283608229362066495, guid: 9f4e315e05b1048a68b80671ef43fca6,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 980
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6283608229362066495, guid: 9f4e315e05b1048a68b80671ef43fca6,
         type: 3}
