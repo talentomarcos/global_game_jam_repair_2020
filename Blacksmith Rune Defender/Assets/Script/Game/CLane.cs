@@ -118,9 +118,8 @@ public class CLane : MonoBehaviour
     public void SpawnEnemy()
     {
         float randSpawn = Random.value;
-        if (randSpawn < 1f)
-        //if (randSpawn < .02f)
-            {
+        if (randSpawn < .02f)
+        {
             GameObject heart = Instantiate(CLevelManager.Inst._heart, transform);
             _currentHeart = heart.GetComponent<CHeart>();
             heart.transform.position = _enemySpawnPonint.position;
