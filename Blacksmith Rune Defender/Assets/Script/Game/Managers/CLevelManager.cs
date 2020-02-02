@@ -27,6 +27,7 @@ public class CLevelManager : CStateMachine
 
     public Vector2 _minTimeEnemySpawn;
     public Vector2 _maxTimeEnemySpawn;
+    public Vector2 _timeEnemySpawnDecrese;
 
     private Vector2 _currentTimeEnemySpawn;
 
@@ -131,5 +132,16 @@ public class CLevelManager : CStateMachine
     public void TogglePause()
     {
         SetPause(!GameData.IsPause);
+    }
+
+    public bool CanTimeBetweenSpawnsBeDecreased()
+    {
+        return (_currentTimeEnemySpawn - _minTimeEnemySpawn).sqrMagnitude < .01f;
+    }
+
+    public void DecreaseTimeBetweenSpawns()
+    {
+        _currentTimeEnemySpawn = new Vector2(Mathf.Clamp((_currentTimeEnemySpawn.x - _timeEnemySpawnDecrese.x), _minTimeEnemySpawn.x, _maxTimeEnemySpawn.x),
+            Mathf.Clamp((_currentTimeEnemySpawn.y - _timeEnemySpawnDecrese.y), _minTimeEnemySpawn.y, _maxTimeEnemySpawn.y));
     }
 }

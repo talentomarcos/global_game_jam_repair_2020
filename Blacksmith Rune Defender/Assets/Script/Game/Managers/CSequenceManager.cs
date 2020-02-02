@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +20,10 @@ public class CSequenceManager : MonoBehaviour
     }
 
     private CSequenceData[] _openSequences = new CSequenceData[3];
-    public float _sequenceWaitTime = 7f;
+    public float _maxSequenceWaitTime = 7f;
+    public float _minSequenceWaitTime = 2f;
+    public float _sequenceWaitTimeDecrease = .6f;
+    private float _currentSequenceWaitTime = 7f;
 
     public int _startSequenceCount = 2;
     public int _maxSequenceCount = 4;
@@ -31,6 +35,10 @@ public class CSequenceManager : MonoBehaviour
     public List<CLane> _lanes;
 
     private int _completedSeqCounter = 0;
+
+    public int _completedSeqToDiffIncrease = 10;
+
+    private int _diffIncreaseAmt = 1;
 
     void Awake()
     {
@@ -97,7 +105,7 @@ public class CSequenceManager : MonoBehaviour
                     break;
             }
         }
-        CSequenceData data = new CSequenceData(_sequenceWaitTime, sequence);
+        CSequenceData data = new CSequenceData(_currentSequenceWaitTime, sequence);
         _openSequences[aLane] = data;
         return data;
     }
@@ -144,7 +152,41 @@ public class CSequenceManager : MonoBehaviour
             {
                 _openSequences[aLane] = null;
                 _completedSeqCounter++;
+                if (_completedSeqCounter > _completedSeqToDiffIncrease*_diffIncreaseAmt)
+                {
+                    IncreaseDifficulty();
+                }
             }
         }
+    }
+
+    private void IncreaseDifficulty()
+    {
+        if (_currentSequenceCount < _maxSequenceCount)
+        {
+            _currentSequenceCount++;
+        }
+        else if (CLevelManager.Inst.CanTimeBetweenSpawnsBeDecreased())
+        {
+            CLevelManager.Inst.DecreaseTimeBetweenSpawns();
+        }
+        else if (_currentSequenceWaitTime - _minSequenceWaitTime > 0.01f)
+        {
+            _currentSequenceWaitTime -= _sequenceWaitTimeDecrease;
+            if (_currentSequenceWaitTime - _minSequenceWaitTime < 0.01f)
+            {
+                _currentSequenceWaitTime = _minSequenceWaitTime;
+            }
+        }
+        else
+        {
+            // To Do: Rotate the controls.
+        }
+        _diffIncreaseAmt++;
+    }
+
+    public int GetCompletedSeqCounter()
+    {
+        return _completedSeqCounter;
     }
 }

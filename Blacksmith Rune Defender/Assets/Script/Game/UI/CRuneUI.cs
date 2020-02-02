@@ -20,10 +20,10 @@ public class CRuneUI : MonoBehaviour
 
     public void SetRune(Runes aRune)
     {
-        if (aRune == _type)
-        {
-            return;
-        }
+        //if (aRune == _type)
+        //{
+        //    return;
+        //}
         _type = aRune;
         switch (aRune)
         {

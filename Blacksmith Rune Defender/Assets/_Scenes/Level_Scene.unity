@@ -219,8 +219,9 @@ MonoBehaviour:
       type: 3}
     minRuneCountToSpawn: 0
     spawnProbability: 1
-  _minTimeEnemySpawn: {x: 0.5, y: 1}
+  _minTimeEnemySpawn: {x: 0.3, y: 0.7}
   _maxTimeEnemySpawn: {x: 3, y: 4}
+  _timeEnemySpawnDecrese: {x: 0, y: 0}
   _player: {fileID: 1037570205}
   _deathMenu: {fileID: 1211951282}
   _pauseMenu: {fileID: 451948627}
@@ -236,7 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a06be3a9c0247304ea6674cb9b71b0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sequenceWaitTime: 7
+  _maxSequenceWaitTime: 7
+  _minSequenceWaitTime: 1.8
+  _sequenceWaitTimeDecrease: 0.8
   _startSequenceCount: 2
   _maxSequenceCount: 4
   _errorTimeReduce: 1
@@ -244,6 +247,7 @@ MonoBehaviour:
   - {fileID: 416610371}
   - {fileID: 1716832397}
   - {fileID: 1768687411}
+  _completedSeqToDiffIncrease: 10
 --- !u!1 &651163811
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,26 +455,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 619
-      objectReference: {fileID: 0}
-    - target: {fileID: 6540924884487273536, guid: 484097bc69377471b9a6d194fba78af1,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -414.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6540924884487273536, guid: 484097bc69377471b9a6d194fba78af1,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 6540924884487273536, guid: 484097bc69377471b9a6d194fba78af1,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 842.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6540924884487273536, guid: 484097bc69377471b9a6d194fba78af1,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6933305383700643381, guid: 484097bc69377471b9a6d194fba78af1,
         type: 3}
